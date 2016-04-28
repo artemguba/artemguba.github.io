@@ -82,7 +82,7 @@ function get_freq(key)
 
 function n(key)
 {
- return '<td><a  class="btn btn-default" href="javascript:p(\'' + key+ '\')">'+get_freq(key) + '</a></td>';
+ return '<td><a  class="btn btn-default btn-sm btn-block" href="javascript:p(\'' + key+ '\')">'+get_freq(key) + '</a></td>';
 }
 </script>
 
@@ -170,15 +170,7 @@ function n(key)
 </tr>
 <tr>
  <th><i>Фа</i></th>
- <td><a href="javascript:p('F0')"><script>document.write(get_freq('F0')); </script></td>
- <td><a href="javascript:p('F1')"><script>document.write(get_freq('F1')); </script></td>
- <td><a href="javascript:p('F2')"><script>document.write(get_freq('F2')); </script></td>
- <td><a href="javascript:p('F3')"><script>document.write(get_freq('F3')); </script></td>
- <td><a href="javascript:p('F4')"><script>document.write(get_freq('F4')); </script></td>
- <td><a href="javascript:p('F5')"><script>document.write(get_freq('F5')); </script></td>
- <td><a href="javascript:p('F6')"><script>document.write(get_freq('F6')); </script></td>
- <td><a href="javascript:p('F7')"><script>document.write(get_freq('F7')); </script></td>
- <td><a href="javascript:p('F8')"><script>document.write(get_freq('F8')); </script></td>
+ <script>document.write(n('F0')+n('F1')+n('F2')+n('F3')+n('F4')+n('F5')+n('F6')+n('F7')+n('F8')); </script></td>
 </tr>
 <tr>
  <th><i>Фа&#9839;</i></th>
