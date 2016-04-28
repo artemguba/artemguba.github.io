@@ -11,6 +11,7 @@
 </head>
   <body>
 <script>
+/*
 var width = 1000, octave = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'], id = "", div, whitekeys=0, keys = [],context = window.AudioContext ? new AudioContext() : new webkitAudioContext();
 parent: for (var i = 0; i < 8; i++) {
 	for (var j = 0; j < 12; j++) {
@@ -26,7 +27,7 @@ parent: for (var i = 0; i < 8; i++) {
 		document.body.appendChild(div);}
 }
 document.body.addEventListener('click', play);
-
+*/
 
 function play(e) {
 	var controctave = { 'C': 32.703, 'Cs': 34.648, 'D': 36.708, 'Ds': 38.891, 'E': 41.203, 'F': 43.654, 'Fs': 46.249, 'G': 48.999, 'Gs': 51.913, 'A': 55, 'As': 58.27, 'B': 61.735}, osc = context.createOscillator();
@@ -88,11 +89,6 @@ function n(key)
 
  <div class="container">
       <div class="starter-template">
-        <h1>-</h1>
-        <h1>-</h1>
-        <h1>-</h1>
-        <h1>-</h1>
-        <h1>-</h1>
         <h1>Таблица частот нот, Гц</h1>
       </div>
 <table class="table table-bordered">
