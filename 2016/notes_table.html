@@ -31,7 +31,7 @@ document.body.addEventListener('click', play);
 function play(e) {
 	var controctave = { 'C': 32.703, 'Cs': 34.648, 'D': 36.708, 'Ds': 38.891, 'E': 41.203, 'F': 43.654, 'Fs': 46.249, 'G': 48.999, 'Gs': 51.913, 'A': 55, 'As': 58.27, 'B': 61.735}, osc = context.createOscillator();
 	osc.frequency.value = e.target.id[2] == 's' ? controctave[e.target.id[0] + 's'] * Math.pow(2, (e.target.id[1]|0) - 1) : controctave[e.target.id[0]] * Math.pow(2, (e.target.id[1]|0) - 1);
-alert(e.target.id + '----' + osc.frequency.value + ' ---- '+ get_freq(e.target.id));
+//alert(e.target.id + '----' + osc.frequency.value + ' ---- '+ get_freq(e.target.id));
 
 	osc.type = "square";
 	osc.connect(context.destination);
@@ -44,7 +44,7 @@ alert(e.target.id + '----' + osc.frequency.value + ' ---- '+ get_freq(e.target.i
 function p(e) {
 	var controctave = { 'C': 32.703, 'Cs': 34.648, 'D': 36.708, 'Ds': 38.891, 'E': 41.203, 'F': 43.654, 'Fs': 46.249, 'G': 48.999, 'Gs': 51.913, 'A': 55, 'As': 58.27, 'B': 61.735}, osc = context.createOscillator();
 	osc.frequency.value = e[2] == 's' ? controctave[e[0] + 's'] * Math.pow(2, (e[1]|0) - 1) : controctave[e[0]] * Math.pow(2, (e[1]|0) - 1);
-alert(e + '----' + osc.frequency.value + ' ---- '+ get_freq(e));
+//alert(e + '----' + osc.frequency.value + ' ---- '+ get_freq(e));
 
 	osc.type = "square";
 	osc.connect(context.destination);
@@ -183,6 +183,26 @@ function n(key)
 <tr>
  <th><i>Фа&#9839;</i></th>
  <script>document.write(n('F0s')+n('F1s')+n('F2s')+n('F3s')+n('F4s')+n('F5s')+n('F6s')+n('F7s')+n('F8s')); </script></td>
+</tr>
+<tr>
+ <th><i>Соль</i></th>
+ <script>document.write(n('G0')+n('G1')+n('G2')+n('G3')+n('G4')+n('G5')+n('G6')+n('G7')+n('G8')); </script></td>
+</tr>
+<tr>
+ <th><i>Соль&#9839;</i></th>
+ <script>document.write(n('G0s')+n('G1s')+n('G2s')+n('G3s')+n('G4s')+n('G5s')+n('G6s')+n('G7s')+n('G8s')); </script></td>
+</tr>
+<tr>
+ <th><i>Ля</i></th>
+ <script>document.write(n('A0')+n('A1')+n('A2')+n('A3')+n('A4')+n('A5')+n('A6')+n('A7')+n('A8')); </script></td>
+</tr>
+<tr>
+ <th><i>Ля&#9839;</i></th>
+ <script>document.write(n('A0s')+n('A1s')+n('A2s')+n('A3s')+n('A4s')+n('A5s')+n('A6s')+n('A7s')+n('A8s')); </script></td>
+</tr>
+<tr>
+ <th><i>Си</i></th>
+ <script>document.write(n('B0')+n('B1')+n('B2')+n('B3')+n('B4')+n('B5')+n('B6')+n('B7')+n('B8')); </script></td>
 </tr>
 
 </table>
