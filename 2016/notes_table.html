@@ -1,0 +1,193 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
+ <link href="css/font-awesome.css" rel="stylesheet">
+ <link rel="stylesheet" href="css/bootstrap.min.css"> 
+
+<title>Таблица частот звучания нот, Гц</title>
+</head>
+  <body>
+<script>
+var width = 1000, octave = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'], id = "", div, whitekeys=0, keys = [],context = window.AudioContext ? new AudioContext() : new webkitAudioContext();
+parent: for (var i = 0; i < 8; i++) {
+	for (var j = 0; j < 12; j++) {
+		if ((i * 12) + j >= 88) break parent;
+		div = document.createElement('div');
+		div.id = (octave[j][1] == '#') ? octave[j][0] + ((((i * 12) + j + 9) / 12)|0) + 's' : octave[j] + ((((i * 12) + j + 9) / 12)|0);
+		if (j % 12 == 1 || j % 12 == 4 || j % 12 == 6 || j % 12 == 9 || j % 12 == 11) {
+			div.setAttribute('style', 'border:1px solid black; position:absolute; background-color:black; left:' + ((width / 50 * whitekeys) - (width / 200)) + 'px; width:' + width/100 + 'px; height: 200px; z-index:1;');}
+		else {
+			div.setAttribute('style', 'border:1px solid black; position:absolute; background-color:white; left:' + (width / 50 * whitekeys) + 'px; width:' + width/50 + 'px; height:300px;');
+			whitekeys++;
+		}
+		document.body.appendChild(div);}
+}
+document.body.addEventListener('click', play);
+
+
+function play(e) {
+	var controctave = { 'C': 32.703, 'Cs': 34.648, 'D': 36.708, 'Ds': 38.891, 'E': 41.203, 'F': 43.654, 'Fs': 46.249, 'G': 48.999, 'Gs': 51.913, 'A': 55, 'As': 58.27, 'B': 61.735}, osc = context.createOscillator();
+	osc.frequency.value = e.target.id[2] == 's' ? controctave[e.target.id[0] + 's'] * Math.pow(2, (e.target.id[1]|0) - 1) : controctave[e.target.id[0]] * Math.pow(2, (e.target.id[1]|0) - 1);
+alert(e.target.id + '----' + osc.frequency.value + ' ---- '+ get_freq(e.target.id));
+
+	osc.type = "square";
+	osc.connect(context.destination);
+	osc.start(0);
+	setTimeout(function() {
+	    osc.stop(0);
+	    osc.disconnect(context.destination);
+	}, 1000 / 2);}
+
+function p(e) {
+	var controctave = { 'C': 32.703, 'Cs': 34.648, 'D': 36.708, 'Ds': 38.891, 'E': 41.203, 'F': 43.654, 'Fs': 46.249, 'G': 48.999, 'Gs': 51.913, 'A': 55, 'As': 58.27, 'B': 61.735}, osc = context.createOscillator();
+	osc.frequency.value = e[2] == 's' ? controctave[e[0] + 's'] * Math.pow(2, (e[1]|0) - 1) : controctave[e[0]] * Math.pow(2, (e[1]|0) - 1);
+alert(e + '----' + osc.frequency.value + ' ---- '+ get_freq(e));
+
+	osc.type = "square";
+	osc.connect(context.destination);
+	osc.start(0);
+	setTimeout(function() {
+	    osc.stop(0);
+	    osc.disconnect(context.destination);
+	}, 1000 / 2);}
+
+function get_freq(key) 
+{
+	var controctave = {
+			'C': 32.703,
+			'Cs': 34.648,
+			'D': 36.708,
+			'Ds': 38.891,
+			'E': 41.203,
+			'F': 43.654,
+			'Fs': 46.249,
+			'G': 48.999,
+			'Gs': 51.913,
+			'A': 55,
+			'As': 58.27,
+			'B': 61.735,
+		},
+		note = key[0].toUpperCase(),
+		octave = parseInt(key[1]),
+		sharp = key[2] == 's' ? true : false;
+	if (sharp) {
+		return controctave[note + 's'] * Math.pow(2, octave-1);
+	} else {
+		return controctave[note] * Math.pow(2, octave-1);
+	}
+}
+
+function n(key)
+{
+ return '<td><a  class="btn btn-default" href="javascript:p(\'' + key+ '\')">'+get_freq(key) + '</a></td>';
+}
+</script>
+
+ <div class="container">
+      <div class="starter-template">
+        <h1>-</h1>
+        <h1>-</h1>
+        <h1>-</h1>
+        <h1>-</h1>
+        <h1>-</h1>
+        <h1>Таблица частот нот, Гц</h1>
+      </div>
+<table class="table table-bordered">
+<tr>
+ <th>&nbsp;</th>
+ <th>Суб-контpоктава</th>
+ <th>Контpоктава</th>
+ <th>Большая октава</th>	
+ <th>Малая октава</th>	
+ <th>Первая</th>	
+ <th>Вторая</th>	
+ <th>Третья</th>	
+ <th>Четвертая</th>	
+ <th>Пятая</th>
+</tr>
+<tr>
+ <th><i>До</i></th>
+ <td><a href="javascript:p('C0')"><script>document.write(get_freq('C0')); </script></td>
+ <td><a href="javascript:p('C1')"><script>document.write(get_freq('C1')); </script></td>
+ <td><a href="javascript:p('C2')"><script>document.write(get_freq('C2')); </script></td>
+ <td><a href="javascript:p('C3')"><script>document.write(get_freq('C3')); </script></td>
+ <td><a href="javascript:p('C4')"><script>document.write(get_freq('C4')); </script></td>
+ <td><a href="javascript:p('C5')"><script>document.write(get_freq('C5')); </script></td>
+ <td><a href="javascript:p('C6')"><script>document.write(get_freq('C6')); </script></td>
+ <td><a href="javascript:p('C7')"><script>document.write(get_freq('C7')); </script></td>
+ <td><a href="javascript:p('C8')"><script>document.write(get_freq('C8')); </script></td>
+</tr>
+<tr>
+ <th><i>До&#9839;</i></th>
+ <td><a href="javascript:p('C0s')"><script>document.write(get_freq('C0s')); </script></td>
+ <td><a href="javascript:p('C1s')"><script>document.write(get_freq('C1s')); </script></td>
+ <td><a href="javascript:p('C2s')"><script>document.write(get_freq('C2s')); </script></td>
+ <td><a href="javascript:p('C3s')"><script>document.write(get_freq('C3s')); </script></td>
+ <td><a href="javascript:p('C4s')"><script>document.write(get_freq('C4s')); </script></td>
+ <td><a href="javascript:p('C5s')"><script>document.write(get_freq('C5s')); </script></td>
+ <td><a href="javascript:p('C6s')"><script>document.write(get_freq('C6s')); </script></td>
+ <td><a href="javascript:p('C7s')"><script>document.write(get_freq('C7s')); </script></td>
+ <td><a href="javascript:p('C8s')"><script>document.write(get_freq('C8s')); </script></td>
+</tr>
+<tr>
+ <th><i>Ре</i></th>
+ <td><a href="javascript:p('D0')"><script>document.write(get_freq('D0')); </script></td>
+ <td><a href="javascript:p('D1')"><script>document.write(get_freq('D1')); </script></td>
+ <td><a href="javascript:p('D2')"><script>document.write(get_freq('D2')); </script></td>
+ <td><a href="javascript:p('D3')"><script>document.write(get_freq('D3')); </script></td>
+ <td><a href="javascript:p('D4')"><script>document.write(get_freq('D4')); </script></td>
+ <td><a href="javascript:p('D5')"><script>document.write(get_freq('D5')); </script></td>
+ <td><a href="javascript:p('D6')"><script>document.write(get_freq('D6')); </script></td>
+ <td><a href="javascript:p('D7')"><script>document.write(get_freq('D7')); </script></td>
+ <td><a href="javascript:p('D8')"><script>document.write(get_freq('D8')); </script></td>
+</tr>
+<tr>
+ <th><i>Ре&#9839;</i></th>
+ <td><a href="javascript:p('D0s')"><script>document.write(get_freq('D0s')); </script></td>
+ <td><a href="javascript:p('D1s')"><script>document.write(get_freq('D1s')); </script></td>
+ <td><a href="javascript:p('D2s')"><script>document.write(get_freq('D2s')); </script></td>
+ <td><a href="javascript:p('D3s')"><script>document.write(get_freq('D3s')); </script></td>
+ <td><a href="javascript:p('D4s')"><script>document.write(get_freq('D4s')); </script></td>
+ <td><a href="javascript:p('D5s')"><script>document.write(get_freq('D5s')); </script></td>
+ <td><a href="javascript:p('D6s')"><script>document.write(get_freq('D6s')); </script></td>
+ <td><a href="javascript:p('D7s')"><script>document.write(get_freq('D7s')); </script></td>
+ <td><a href="javascript:p('D8s')"><script>document.write(get_freq('D8s')); </script></td>
+</tr>
+<tr>
+ <th><i>Ми</i></th>
+ <td><a href="javascript:p('E0')"><script>document.write(get_freq('E0')); </script></td>
+ <td><a href="javascript:p('E1')"><script>document.write(get_freq('E1')); </script></td>
+ <td><a href="javascript:p('E2')"><script>document.write(get_freq('E2')); </script></td>
+ <td><a href="javascript:p('E3')"><script>document.write(get_freq('E3')); </script></td>
+ <td><a href="javascript:p('E4')"><script>document.write(get_freq('E4')); </script></td>
+ <td><a href="javascript:p('E5')"><script>document.write(get_freq('E5')); </script></td>
+ <td><a href="javascript:p('E6')"><script>document.write(get_freq('E6')); </script></td>
+ <td><a href="javascript:p('E7')"><script>document.write(get_freq('E7')); </script></td>
+ <td><a href="javascript:p('E8')"><script>document.write(get_freq('E8')); </script></td>
+</tr>
+<tr>
+ <th><i>Фа</i></th>
+ <td><a href="javascript:p('F0')"><script>document.write(get_freq('F0')); </script></td>
+ <td><a href="javascript:p('F1')"><script>document.write(get_freq('F1')); </script></td>
+ <td><a href="javascript:p('F2')"><script>document.write(get_freq('F2')); </script></td>
+ <td><a href="javascript:p('F3')"><script>document.write(get_freq('F3')); </script></td>
+ <td><a href="javascript:p('F4')"><script>document.write(get_freq('F4')); </script></td>
+ <td><a href="javascript:p('F5')"><script>document.write(get_freq('F5')); </script></td>
+ <td><a href="javascript:p('F6')"><script>document.write(get_freq('F6')); </script></td>
+ <td><a href="javascript:p('F7')"><script>document.write(get_freq('F7')); </script></td>
+ <td><a href="javascript:p('F8')"><script>document.write(get_freq('F8')); </script></td>
+</tr>
+<tr>
+ <th><i>Фа&#9839;</i></th>
+ <script>document.write(n('F0s')+n('F1s')+n('F2s')+n('F3s')+n('F4s')+n('F5s')+n('F6s')+n('F7s')+n('F8s')); </script></td>
+</tr>
+
+</table>
+
+</div>
+
+</body>
+</html>
