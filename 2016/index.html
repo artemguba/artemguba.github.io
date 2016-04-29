@@ -11,8 +11,9 @@
 </head>
   <body>
 <script>
-/*
+
 var width = 1000, octave = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'], id = "", div, whitekeys=0, keys = [],context = window.AudioContext ? new AudioContext() : new webkitAudioContext();
+/*
 parent: for (var i = 0; i < 8; i++) {
 	for (var j = 0; j < 12; j++) {
 		if ((i * 12) + j >= 88) break parent;
@@ -89,7 +90,7 @@ function n(key)
 
  <div class="container">
       <div class="starter-template">
-        <h1>Таблица частот нот, Гц</h1>
+        <h2>Таблица частот нот, Гц</h2>
       </div>
 <table class="table table-bordered">
 <tr>
@@ -105,51 +106,51 @@ function n(key)
  <td><button type="button" class="btn btn-primary btn-sm btn-block">Пятая</button></td>
 </tr>
 <tr>
- <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>До</i></button></td>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>до</i></button></td>
  <script>document.write(n('C0')+n('C1')+n('C2')+n('C3')+n('C4')+n('C5')+n('C6')+n('C7')+n('C8')); </script></td>
 </tr>
 <tr>
- <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>До&#9839;</i></button></td>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>до&#9839;</i></button></td>
  <script>document.write(n('C0s')+n('C1s')+n('C2s')+n('C3s')+n('C4s')+n('C5s')+n('C6s')+n('C7s')+n('C8s')); </script></td>
 </tr>
 <tr>
- <th><i>Ре</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>ре</i></button></td>
  <script>document.write(n('D0')+n('D1')+n('D2')+n('D3')+n('D4')+n('D5')+n('D6')+n('D7')+n('D8')); </script></td>
 </tr>
 <tr>
- <th><i>Ре&#9839;</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>ре&#9839;</i></button></td>
  <script>document.write(n('D0s')+n('D1s')+n('D2s')+n('D3s')+n('D4s')+n('D5s')+n('D6s')+n('D7s')+n('D8s')); </script></td>
 </tr>
 <tr>
- <th><i>Ми</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>ми</i></button></td>
  <script>document.write(n('E0')+n('E1')+n('E2')+n('E3')+n('E4')+n('E5')+n('E6')+n('E7')+n('E8')); </script></td>
 </tr>
 <tr>
- <th><i>Фа</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>фа</i></button></td>
  <script>document.write(n('F0')+n('F1')+n('F2')+n('F3')+n('F4')+n('F5')+n('F6')+n('F7')+n('F8')); </script></td>
 </tr>
 <tr>
- <th><i>Фа&#9839;</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>фа&#9839;</i></button></td>
  <script>document.write(n('F0s')+n('F1s')+n('F2s')+n('F3s')+n('F4s')+n('F5s')+n('F6s')+n('F7s')+n('F8s')); </script></td>
 </tr>
 <tr>
- <th><i>Соль</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>соль</i></button></td>
  <script>document.write(n('G0')+n('G1')+n('G2')+n('G3')+n('G4')+n('G5')+n('G6')+n('G7')+n('G8')); </script></td>
 </tr>
 <tr>
- <th><i>Соль&#9839;</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>соль&#9839;</i></button></td>
  <script>document.write(n('G0s')+n('G1s')+n('G2s')+n('G3s')+n('G4s')+n('G5s')+n('G6s')+n('G7s')+n('G8s')); </script></td>
 </tr>
 <tr>
- <th><i>Ля</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>ля</i></button></td>
  <script>document.write(n('A0')+n('A1')+n('A2')+n('A3')+n('A4')+n('A5')+n('A6')+n('A7')+n('A8')); </script></td>
 </tr>
 <tr>
- <th><i>Ля&#9839;</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>ля&#9839;</i></button></td>
  <script>document.write(n('A0s')+n('A1s')+n('A2s')+n('A3s')+n('A4s')+n('A5s')+n('A6s')+n('A7s')+n('A8s')); </script></td>
 </tr>
 <tr>
- <th><i>Си</i></th>
+ <td><button type="button" class="btn btn-primary btn-sm btn-block"><i>си&#9839;</i></button></td>
  <script>document.write(n('B0')+n('B1')+n('B2')+n('B3')+n('B4')+n('B5')+n('B6')+n('B7')+n('B8')); </script></td>
 </tr>
 
